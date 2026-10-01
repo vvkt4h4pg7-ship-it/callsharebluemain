@@ -1,0 +1,35 @@
+name: Blue Main iOS Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Build unsigned iOS app (v0.2)
+        run: |
+          xcodebuild \
+            -project BlueMain.xcodeproj \
+            -scheme BlueMain \
+            -sdk iphoneos \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO
+
+      - name: Upload .app
+        uses: actions/upload-artifact@v4
+        with:
+          name: BlueMain-iOS-v0.2
+          path: build/Build/Products/Release-iphoneos/BlueMain.app
