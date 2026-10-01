@@ -1,0 +1,27 @@
+// !$*UTF8*$!
+{ archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+22D3ACC4CA9B446CA2028D40 = {isa = PBXBuildFile; fileRef = 22D3ACC4CA9B446CA2028D40; };
+A0FA98C8EE2647D0A4EE9417 = {isa = PBXBuildFile; fileRef = A0FA98C8EE2647D0A4EE9417; };
+D6A04C8C5B9440CE8366F4CB = {isa = PBXBuildFile; fileRef = D6A04C8C5B9440CE8366F4CB; };
+67EEA9F76DDE4EB2B6D46A49 = {isa = PBXBuildFile; fileRef = 67EEA9F76DDE4EB2B6D46A49; };
+D2C97702116F4937975AF376 = {isa = PBXBuildFile; fileRef = D2C97702116F4937975AF376; };
+6154857AAE7B494E96C09F4B = {isa = PBXFileReference; explicitFileType = wrapper.application; path = BlueMain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+22D3ACC4CA9B446CA2028D40 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMainApp.swift; sourceTree = "<group>"; };
+A0FA98C8EE2647D0A4EE9417 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitManager.swift; sourceTree = "<group>"; };
+D6A04C8C5B9440CE8366F4CB = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
+67EEA9F76DDE4EB2B6D46A49 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+D2C97702116F4937975AF376 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+8024300B63B14030BEB5FA0E = {isa = PBXProject; buildConfigurationList = 754DD9C0219C497E9F95A516; compatibilityVersion = "Xcode 14.0"; mainGroup = 8024300B63B14030BEB5FA0E; productRefGroup = 9E45B47836FE4E7AB74AE522; projectDirPath = ""; projectRoot = ""; targets = (3D4B068B03E04EDDAB77479B); };
+3D4B068B03E04EDDAB77479B = {isa = PBXNativeTarget; buildConfigurationList = B5DC5C0490794BA181E67798; buildPhases = (5309FF4F02F84E6CB564B802,F78C2133D260489E8402C15A); name = BlueMain; productName = BlueMain; productReference = 6154857AAE7B494E96C09F4B; productType = "com.apple.product-type.application"; };
+8024300B63B14030BEB5FA0E = {isa = PBXGroup; children = (2982492D13674674B4FCB8E8,9E45B47836FE4E7AB74AE522); sourceTree = "<group>"; };
+2982492D13674674B4FCB8E8 = {isa = PBXGroup; children = (22D3ACC4CA9B446CA2028D40,A0FA98C8EE2647D0A4EE9417,D6A04C8C5B9440CE8366F4CB,67EEA9F76DDE4EB2B6D46A49,D2C97702116F4937975AF376); path = BlueMain; sourceTree = "<group>"; };
+9E45B47836FE4E7AB74AE522 = {isa = PBXGroup; children = (6154857AAE7B494E96C09F4B); name = Products; sourceTree = "<group>"; };
+5309FF4F02F84E6CB564B802 = {isa = PBXSourcesBuildPhase; files = (22D3ACC4CA9B446CA2028D40,A0FA98C8EE2647D0A4EE9417,D6A04C8C5B9440CE8366F4CB,67EEA9F76DDE4EB2B6D46A49); };
+F78C2133D260489E8402C15A = {isa = PBXResourcesBuildPhase; files = (D2C97702116F4937975AF376); };
+F9FB1E07E82A49C19C2F283F = {isa = XCBuildConfiguration; buildSettings = { SDKROOT = iphoneos; SWIFT_VERSION = 5.0; }; name = Debug; };
+26EF6D96A905465EAE4D8D02 = {isa = XCBuildConfiguration; buildSettings = { SDKROOT = iphoneos; SWIFT_VERSION = 5.0; }; name = Release; };
+5FF28DD59C3749D1B4CACCB8 = {isa = XCBuildConfiguration; buildSettings = { CODE_SIGNING_ALLOWED = NO; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = BlueMain/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 16.0; PRODUCT_BUNDLE_IDENTIFIER = com.vvkt4h4pg7shipit.BlueMain; PRODUCT_NAME = "$(TARGET_NAME)"; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Debug; };
+511D955415BC42878CC57A38 = {isa = XCBuildConfiguration; buildSettings = { CODE_SIGNING_ALLOWED = NO; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = BlueMain/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 16.0; PRODUCT_BUNDLE_IDENTIFIER = com.vvkt4h4pg7shipit.BlueMain; PRODUCT_NAME = "$(TARGET_NAME)"; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Release; };
+754DD9C0219C497E9F95A516 = {isa = XCConfigurationList; buildConfigurations = (F9FB1E07E82A49C19C2F283F,26EF6D96A905465EAE4D8D02); defaultConfigurationName = Release; };
+B5DC5C0490794BA181E67798 = {isa = XCConfigurationList; buildConfigurations = (5FF28DD59C3749D1B4CACCB8,511D955415BC42878CC57A38); defaultConfigurationName = Release; };
+} rootObject = 8024300B63B14030BEB5FA0E; }

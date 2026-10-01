@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleDisplayName</key><string>Blue Main</string>
+<key>CFBundleIdentifier</key><string>com.vvkt4h4pg7shipit.BlueMain</string>
+<key>CFBundleName</key><string>BlueMain</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleShortVersionString</key><string>0.3</string>
+<key>CFBundleVersion</key><string>3</string>
+<key>LSRequiresIPhoneOS</key><true/>
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>Blue Main, J7Bridge-Gateway ile BLE bağlantısı kurmak için Bluetooth kullanır.</string>
+<key>UIBackgroundModes</key><array><string>voip</string><string>bluetooth-central</string></array>
+</dict></plist>
