@@ -1,42 +1,19 @@
-# Blue Main iOS — V0.1 CallKit Test
+# Blue Main iOS v0.2
 
-İlk prototipin amacı yalnızca fiziksel iPhone üzerinde CallKit incoming-call zincirini doğrulamaktır.
+CallKit incoming-call diagnostic prototype for the Blue Main project.
 
-## Bu sürümde
-
-- SwiftUI arayüzü
-- CallKit `CXProvider`
-- `reportNewIncomingCall`
-- Answer / End action callback'leri
-- CallKit audio session activation callback'i
-- BLE / GSM / HFP / gerçek ses YOK
+## v0.2 changes
+- Added `UIBackgroundModes` with `voip` for CallKit/VoIP background support.
+- Added detailed CallKit error domain/code/userInfo logging.
+- Added explicit incoming-call error classification.
+- Logs audio-session sample rate and channel counts when CallKit activates the audio session.
+- BLE, GSM and HFP are intentionally not included yet.
 
 ## Test
+1. Install the v0.2 build on the iPhone.
+2. Open **J7Bridge**.
+3. Tap **TEST INCOMING CALL**.
+4. If the CallKit UI appears, answer it and observe the status/logs.
+5. If it fails, capture the exact `domain=... code=... userInfo=...` line.
 
-1. `BlueMain.xcodeproj` dosyasını Xcode ile açın.
-2. Signing & Capabilities bölümünde kendi Apple hesabınızı / Team'inizi seçin.
-3. Bundle Identifier değerini benzersiz yapın (ör. `com.ugur.bluemain`).
-4. Gerçek iPhone 16 Pro'yu seçip Run yapın.
-5. Uygulamada `TEST INCOMING CALL` butonuna basın.
-6. Beklenen sonuç: iOS'un sistem CallKit gelen çağrı arayüzü açılır.
-7. `Kabul Et` sonrası Xcode console'da `ANSWER` ve audio-session loglarını kontrol edin.
-
-> Not: İlk test fiziksel cihaz içindir. Simulator davranışı bu prototip için referans kabul edilmemelidir.
-
-## GitHub
-
-```bash
-git init
-git add .
-git commit -m "Blue Main iOS v0.1 CallKit test"
-git branch -M main
-git remote add origin <YENI_GITHUB_REPO_URL>
-git push -u origin main
-```
-
-## Sonraki sürüm
-
-V0.2: CoreBluetooth ile BLE discovery / control channel.
-V0.3: J7 `RINGING + NUMBER` → CallKit.
-V0.4: Answer / End round-trip.
-V0.5: BLE Audio Lab.
+The current goal is to isolate the CallKit layer before adding the BLE/GATT control and audio layers.

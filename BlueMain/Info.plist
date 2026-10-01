@@ -24,6 +24,10 @@
     <true/>
     <key>UIApplicationSupportsIndirectInputEvents</key>
     <true/>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>voip</string>
+    </array>
     <key>UILaunchScreen</key>
     <dict/>
 </dict>

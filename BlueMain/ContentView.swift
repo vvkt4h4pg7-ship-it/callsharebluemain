@@ -44,11 +44,11 @@ struct ContentView: View {
                 .buttonStyle(.bordered)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("V0.1 TEST")
+                    Text("V0.2 TEST")
                         .font(.caption)
                         .fontWeight(.bold)
 
-                    Text("Bu sürümde BLE, GSM ve HFP yok. Sadece iPhone'un CallKit incoming-call zincirini doğruluyoruz.")
+                    Text("Bu sürümde BLE, GSM ve HFP hâlâ yok. CallKit incoming-call zincirini ve ayrıntılı hata kodlarını test ediyoruz. UIBackgroundModes=voip eklendi.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

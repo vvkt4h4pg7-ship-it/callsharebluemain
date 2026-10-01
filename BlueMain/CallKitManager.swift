@@ -38,6 +38,7 @@ final class CallKitManager: NSObject, ObservableObject {
         update.hasVideo = false
 
         status = "CallKit'e gelen çağrı bildiriliyor..."
+        print("📞 REPORT INCOMING uuid=\(uuid.uuidString)")
 
         provider.reportNewIncomingCall(with: uuid, update: update) { [weak self] error in
             Task { @MainActor in
@@ -45,10 +46,10 @@ final class CallKitManager: NSObject, ObservableObject {
 
                 if let error {
                     self.currentCallUUID = nil
-                    self.status = "CallKit HATA: \(error.localizedDescription)"
-                    print("❌ CallKit report error: \(error)")
+                    self.status = self.describeCallKitError(error)
+                    print("❌ CallKit report error: \(self.describeNSError(error))")
                 } else {
-                    self.status = "📞 Test çağrısı bildirildi"
+                    self.status = "📞 Test çağrısı bildirildi — CallKit UI bekleniyor"
                     print("✅ Incoming call reported: \(uuid.uuidString)")
                 }
             }
@@ -65,10 +66,41 @@ final class CallKitManager: NSObject, ObservableObject {
         currentCallUUID = nil
         status = "📴 Test çağrısı sonlandırıldı"
     }
+
+    private func describeCallKitError(_ error: Error) -> String {
+        let nsError = error as NSError
+        let domain = nsError.domain
+        let code = nsError.code
+
+        if domain == CXErrorDomainIncomingCall {
+            switch code {
+            case CXErrorCodeIncomingCallError.Code.unknown.rawValue:
+                return "CallKit HATA: IncomingCall UNKNOWN (code=\(code))"
+            case CXErrorCodeIncomingCallError.Code.unentitled.rawValue:
+                return "CallKit HATA: IncomingCall UNENTITLED (code=\(code))"
+            case CXErrorCodeIncomingCallError.Code.callUUIDAlreadyExists.rawValue:
+                return "CallKit HATA: UUID zaten var (code=\(code))"
+            case CXErrorCodeIncomingCallError.Code.filteredByDoNotDisturb.rawValue:
+                return "CallKit HATA: DND nedeniyle filtrelendi (code=\(code))"
+            case CXErrorCodeIncomingCallError.Code.filteredByBlockList.rawValue:
+                return "CallKit HATA: Block List nedeniyle filtrelendi (code=\(code))"
+            default:
+                return "CallKit HATA: IncomingCall code=\(code)"
+            }
+        }
+
+        return "CallKit HATA: domain=\(domain), code=\(code)"
+    }
+
+    private func describeNSError(_ error: Error) -> String {
+        let nsError = error as NSError
+        return "domain=\(nsError.domain) code=\(nsError.code) userInfo=\(nsError.userInfo)"
+    }
 }
 
 extension CallKitManager: CXProviderDelegate {
     nonisolated func providerDidReset(_ provider: CXProvider) {
+        print("⚠️ CallKit providerDidReset")
         Task { @MainActor in
             self.currentCallUUID = nil
             self.status = "Provider reset"
@@ -96,6 +128,7 @@ extension CallKitManager: CXProviderDelegate {
 
     nonisolated func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
         print("🎤🔊 CallKit audio session AKTİF")
+        print("🎧 sampleRate=\(audioSession.sampleRate) inputChannels=\(audioSession.inputNumberOfChannels) outputChannels=\(audioSession.outputNumberOfChannels)")
 
         Task { @MainActor in
             self.status = "🎤🔊 Audio session aktif"
